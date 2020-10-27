@@ -5,11 +5,11 @@ import Stages from "../components/Stages"
 export default function Home() {
   return (
     <Layout>
-      <h1>World Cup of Lines on the TfL Map 2020</h1>
-      <h2>(Plus Thameslink!)</h2>
-      <p>
-        This page will not display correctly in IE11 or on iOS 10.2 or lower.
-      </p>
+      <h1>
+        World Cup of Lines on the TfL Map 2020{" "}
+        <span style={{ fontSize: 18 }}>(Plus Thameslink!)</span>
+      </h1>
+      <p style={{fontSize: 18}}>Click any round to view its poll on Twitter.</p>
 
       <Stages />
 
