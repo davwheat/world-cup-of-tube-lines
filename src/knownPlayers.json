@@ -10,7 +10,7 @@
   "knockoutb2": { "player1": "Metropolitan Line", "player2": "Trams" },
   "knockoutb3": { "player1": "Overground", "player2": "Cable Car" },
   "knockoutb4": { "player1": "DLR", "player2": "Piccadilly Line" },
-  "quartera1": { "player1": null, "player2": null },
+  "quartera1": { "player1": "Northern Line", "player2": "Jubilee Line" },
   "quartera2": { "player1": null, "player2": null },
   "quarterb1": { "player1": null, "player2": null },
   "quarterb2": { "player1": null, "player2": null },

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import "./stages.css"
 import CupData from "../cup.json"
 import KnownPlayers from "../knownPlayers.json"
+import useStateWithLocalStorage from "../useStateWithLocalStorage"
 
 const RefreshTime = 60
 
@@ -16,6 +17,7 @@ async function GetData() {
    *  totalVotes: number,
    *  started: boolean,
    *  name: string,
+   *  id: string,
    * }[]}
    */
   let allGames = []
@@ -104,6 +106,7 @@ async function GetData() {
       player2votes: poll ? poll.options[1].votes : null,
       totalVotes: poll ? poll.options[0].votes + poll.options[1].votes : null,
       started: !!poll,
+      id: tweet.tweetId,
     })
   })
 
@@ -122,10 +125,15 @@ export default function Stages() {
    *  totalVotes: number,
    *  started: boolean,
    *  name: string,
+   *  id: string,
    * }[], Function]}
    */
   const [gameData, setGameData] = useState(null)
   const [timeRemaining, setTimeRemaining] = useState(RefreshTime)
+  const [useVotes, setUseVotes, resetUseVotes] = useStateWithLocalStorage(
+    "use-votes",
+    false
+  )
 
   useEffect(() => {
     if (gameData === null || timeRemaining < 0) {
@@ -145,6 +153,16 @@ export default function Stages() {
   return (
     <>
       <p>Refreshing in {timeRemaining < 0 ? 0 : timeRemaining}s</p>
+      <label>
+        <input
+          checked={useVotes}
+          onChange={e => {
+            setUseVotes(e.target.checked)
+          }}
+          type="checkbox"
+        />{" "}
+        Show vote count
+      </label>
       <article className="cup-root">
         <p className="label" style={{ gridArea: "knockoutLabel" }}>
           Knockout
@@ -168,9 +186,13 @@ export default function Stages() {
               gameName={g.name}
               player1={g.player1}
               player2={g.player2}
+              p1votes={g.player1votes}
+              p2votes={g.player2votes}
               player1pct={((g.player1votes || 1) / (g.totalVotes || 1)) * 100}
               player2pct={((g.player2votes || 1) / (g.totalVotes || 1)) * 100}
               hasStarted={g.started}
+              useVotes={!useVotes}
+              tweetId={g.id}
             />
           ))}
       </article>
@@ -184,46 +206,60 @@ function Game({
   hasStarted,
   player1pct,
   player2pct,
+  p1votes,
+  p2votes,
   gameName,
+  useVotes,
+  tweetId,
 }) {
   return (
     <section className={clsx("game", gameName)} style={{ gridArea: gameName }}>
-      <div
-        className={clsx(
-          "player",
-          "player1",
-          player1
-            ? player1.toLowerCase().replace(/(\s|&)/g, "_")
-            : "unknown-player",
-          hasStarted && "started"
-        )}
-      >
-        <span className="progress" style={{ width: `${player1pct}%` }} />
-        <span className="label">
-          {player1
-            ? player1 +
-              (hasStarted ? `(${parseFloat(player1pct).toFixed(2)}%)` : "")
-            : "???"}
-        </span>
-      </div>
-      <div
-        className={clsx(
-          "player",
-          "player2",
-          player2
-            ? player2.toLowerCase().replace(/\s/g, "_")
-            : "unknown-player",
-          hasStarted && "started"
-        )}
-      >
-        <span className="progress" style={{ width: `${player2pct}%` }} />
-        <span className="label">
-          {player2
-            ? player2 +
-              (hasStarted ? `(${parseFloat(player2pct).toFixed(2)}%)` : "")
-            : "???"}
-        </span>
-      </div>
+      <a href={`https://twitter.com/status/${tweetId}`} target="_blank" rel="noreferrer">
+        <div
+          className={clsx(
+            "player",
+            "player1",
+            player1
+              ? player1.toLowerCase().replace(/(\s|&)/g, "_")
+              : "unknown-player",
+            hasStarted && "started"
+          )}
+        >
+          <span className="progress" style={{ width: `${player1pct}%` }} />
+          <span className="label">
+            {player1
+              ? player1 +
+                (hasStarted
+                  ? useVotes
+                    ? ` (${parseFloat(player1pct).toFixed(2)}%)`
+                    : ` (${p1votes} votes)`
+                  : "")
+              : "???"}
+          </span>
+        </div>
+        <div
+          className={clsx(
+            "player",
+            "player2",
+            player2
+              ? player2.toLowerCase().replace(/\s/g, "_")
+              : "unknown-player",
+            hasStarted && "started"
+          )}
+        >
+          <span className="progress" style={{ width: `${player2pct}%` }} />
+          <span className="label">
+            {player2
+              ? player2 +
+                (hasStarted
+                  ? useVotes
+                    ? ` (${parseFloat(player2pct).toFixed(2)}%)`
+                    : ` (${p2votes} votes)`
+                  : "")
+              : "???"}
+          </span>
+        </div>
+      </a>
     </section>
   )
 }
