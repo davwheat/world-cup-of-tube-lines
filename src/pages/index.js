@@ -12,6 +12,16 @@ export default function Home() {
       </p>
 
       <Stages />
+
+      <section className="other-projects">
+        <h3>My other projects</h3>
+        <a href="https://ukdotmatrix.web.app/" target="_blank" rel="noreferrer">
+          UK Departure Board Emulator
+        </a>
+        <a href="https://github.com/davwheat" target="_blank" rel="noreferrer">
+          My GitHub
+        </a>
+      </section>
     </Layout>
   )
 }
