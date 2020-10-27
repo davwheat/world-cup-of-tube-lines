@@ -11,7 +11,7 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <title>World Cup of Tube Lines 2020</title>
+        <title>World Cup of Lines on the TfL Map 2020</title>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
