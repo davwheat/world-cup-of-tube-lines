@@ -1,0 +1,223 @@
+.playerMixin() {
+  color: contrast(@bg-color);
+
+  &.started {
+    background: darken(@bg-color, 7%);
+  }
+
+  &:not(.started) {
+    background: @bg-color;
+    span.progress {
+      border-right: none !important;
+    }
+  }
+
+  &.started span.progress {
+    background-color: lighten(@bg-color, 7%);
+    border-right-color: contrast(@bg-color, #fff, #000);
+  }
+}
+
+.cup-root {
+  margin-top: 16px;
+  display: grid;
+  grid-template-areas:
+    "knockoutLabel  quarterLabel  semiLabel finalLabel"
+    "knockouta1     .             .         ."
+    "knockouta1     quartera1     .         ."
+    "knockouta2     quartera1     .         ."
+    "knockouta2     .             semia1    ."
+    "knockouta3     .             semia1    ."
+    "knockouta3     quartera2     .         ."
+    "knockouta4     quartera2     .         ."
+    "knockouta4     .             .         final"
+    "knockoutb1     .             .         final"
+    "knockoutb1     quarterb1     .         ."
+    "knockoutb2     quarterb1     .         ."
+    "knockoutb2     .             semib1    ."
+    "knockoutb3     .             semib1    ."
+    "knockoutb3     quarterb2     .         playoffLabel"
+    "knockoutb4     quarterb2     .         playoff"
+    "knockoutb4     .             .         playoff";
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  // grid-template-rows: repeat(16, max(1fr));
+  min-height: 720px;
+  color: #fff;
+  gap: 8px;
+
+  .label {
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+}
+
+.game {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.player {
+  padding: 8px;
+  position: relative;
+  min-height: 16px + 8px * 2;
+
+  &.unknown-player {
+    @bg-color: #666;
+    .playerMixin();
+
+    span.progress {
+      border-right: none !important;
+    }
+  }
+
+  &.bakerloo {
+    &,
+    &_line {
+      @bg-color: #b36305;
+      .playerMixin();
+    }
+  }
+
+  &.central {
+    &,
+    &_line {
+      @bg-color: #e32017;
+      .playerMixin();
+    }
+  }
+
+  &.circle {
+    &,
+    &_line {
+      @bg-color: #ffd300;
+      .playerMixin();
+    }
+  }
+
+  &.district {
+    &,
+    &_line {
+      @bg-color: #00782a;
+      .playerMixin();
+    }
+  }
+
+  &.hammersmith_and_city,
+  &.hammersmith___city,
+  &.h_c {
+    &,
+    &_line {
+      @bg-color: #f3a9bb;
+      .playerMixin();
+    }
+  }
+
+  &.jubilee {
+    &,
+    &_line {
+      @bg-color: #a0a5a9;
+      .playerMixin();
+    }
+  }
+
+  &.metropolitan {
+    &,
+    &_line {
+      @bg-color: #9b0056;
+      .playerMixin();
+    }
+  }
+
+  &.northern {
+    &,
+    &_line {
+      @bg-color: black;
+      .playerMixin();
+    }
+  }
+
+  &.piccadilly {
+    &,
+    &_line {
+      @bg-color: #003688;
+      .playerMixin();
+    }
+  }
+
+  &.victoria {
+    &,
+    &_line {
+      @bg-color: #0098d4;
+      .playerMixin();
+    }
+  }
+
+  &.dlr {
+    @bg-color: #00a4a7;
+    .playerMixin();
+  }
+
+  &.overground {
+    @bg-color: #ee7c0e;
+    .playerMixin();
+  }
+
+  &.trams,
+  &.tramlink,
+  &.the_trams {
+    @bg-color: #84b817;
+    .playerMixin();
+  }
+
+  &.cable_car,
+  &.emirates_cable_car,
+  &.cablecar,
+  &.emirates_air_line,
+  &.emirates_air_line_cable_car {
+    @bg-color: #e21836;
+    .playerMixin();
+  }
+
+  &.crossrail,
+  &.tfl_rail,
+  &.purple_line,
+  &.elizabeth_line {
+    @bg-color: #7156a5;
+    .playerMixin();
+  }
+
+  &.thameslink {
+    @bg-color: #e8408b;
+    .playerMixin();
+  }
+
+  span.progress {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    border-right: rgba(128, 128, 128, 0.75) 2px solid;
+    z-index: 9;
+  }
+
+  span.label {
+    color: inherit;
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  &1 {
+    margin-bottom: 4px;
+  }
+}
