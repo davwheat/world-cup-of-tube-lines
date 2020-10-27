@@ -221,7 +221,7 @@ function Game({
     <section className={clsx("game", gameName)} style={{ gridArea: gameName }}>
       <a
         href={tweetId ? `https://twitter.com/geofftech/status/${tweetId}` : "#"}
-        target="_blank"
+        target={tweetId && "_blank"}
         rel="noreferrer"
       >
         <div
