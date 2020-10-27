@@ -136,10 +136,7 @@ export default function Stages() {
    */
   const [gameData, setGameData] = useState(null)
   const [timeRemaining, setTimeRemaining] = useState(RefreshTime)
-  const [useVotes, setUseVotes] = useStateWithLocalStorage(
-    "use-votes",
-    false
-  )
+  const [useVotes, setUseVotes] = useStateWithLocalStorage("use-votes", false)
 
   useEffect(() => {
     if (gameData === null || timeRemaining < 0) {
@@ -223,7 +220,7 @@ function Game({
   return (
     <section className={clsx("game", gameName)} style={{ gridArea: gameName }}>
       <a
-        href={`https://twitter.com/geofftech/status/${tweetId}`}
+        href={tweetId ? `https://twitter.com/geofftech/status/${tweetId}` : "#"}
         target="_blank"
         rel="noreferrer"
       >
