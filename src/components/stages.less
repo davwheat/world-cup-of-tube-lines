@@ -2,7 +2,12 @@
   color: contrast(@bg-color);
 
   &.started {
-    background: darken(@bg-color, 7%);
+    background: contrast(
+      @bg-color,
+      lighten(@bg-color, 7%),
+      darken(@bg-color, 7%),
+      10%
+    );
   }
 
   &:not(.started) {
