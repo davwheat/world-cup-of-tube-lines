@@ -82,7 +82,13 @@ async function GetData() {
    * polls: {id: string, options: {position: number, label: string, votes: number}[]}[]
    * }}
    */
-  const data = await (await fetch(apiUrl)).json()
+  let data
+
+  try {
+    data = await (await fetch(apiUrl)).json()
+  } catch {
+    return null
+  }
 
   console.log(data)
 
@@ -130,14 +136,16 @@ export default function Stages() {
    */
   const [gameData, setGameData] = useState(null)
   const [timeRemaining, setTimeRemaining] = useState(RefreshTime)
-  const [useVotes, setUseVotes, resetUseVotes] = useStateWithLocalStorage(
+  const [useVotes, setUseVotes] = useStateWithLocalStorage(
     "use-votes",
     false
   )
 
   useEffect(() => {
     if (gameData === null || timeRemaining < 0) {
-      GetData().then(d => setGameData(d))
+      GetData()
+        .then(d => setGameData(d))
+        .catch(() => {})
       setTimeRemaining(RefreshTime)
     }
 
