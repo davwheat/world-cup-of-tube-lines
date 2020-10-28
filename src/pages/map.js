@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react"
+
+import TubeMap from "../components/TubeMap"
 
 export default function LiveMap() {
   return (
     <div>
-      <p>Live map</p>
+      <TubeMap />
     </div>
   )
 }

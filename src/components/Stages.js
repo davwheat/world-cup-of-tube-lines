@@ -70,11 +70,8 @@ async function GetData() {
     tweetId: CupData.finals.playoff,
   })
 
-  const tweetIds = allTweets.reduce(
-    (prev, curr) => (curr.tweetId ? [...prev, curr.tweetId] : prev),
-    []
-  )
-  const apiUrl = `https://api.davwheat.dev/getpoll/${tweetIds.join(",")}`
+  const apiUrl = `https://api.davwheat.dev/getpolls`
+  // const apiUrl = `http://localhost:2678/getpolls`
 
   /**
    * @type {{
@@ -90,28 +87,40 @@ async function GetData() {
     return null
   }
 
-  console.log(data)
+  // console.log(data)
 
-  allTweets.forEach(tweet => {
-    const thisTweet = data.tweets.find(t => t.id === tweet.tweetId)
-    const poll = thisTweet
-      ? data.polls.find(p => p.id === thisTweet.attachments.poll_ids[0])
-      : undefined
+  data.forEach(game => {
+    const poll = game.poll
 
-    console.log(tweet.name)
+    allTweets = allTweets.filter(tweet => tweet.tweetId !== game.tweetId)
 
     allGames.push({
-      name: tweet.name,
+      name: game.game,
       player1: poll
         ? poll.options[0].label
-        : KnownPlayers[tweet.name].player1 || null,
+        : KnownPlayers[game.game].player1 || null,
       player2: poll
         ? poll.options[1].label
-        : KnownPlayers[tweet.name].player2 || null,
+        : KnownPlayers[game.game].player2 || null,
       player1votes: poll ? poll.options[0].votes : null,
       player2votes: poll ? poll.options[1].votes : null,
       totalVotes: poll ? poll.options[0].votes + poll.options[1].votes : null,
       started: !!poll,
+      id: game.tweetId,
+    })
+  })
+
+  // console.log(allTweets);
+
+  allTweets.forEach(tweet => {
+    allGames.push({
+      name: tweet.name,
+      player1: null,
+      player2: null,
+      player1votes: null,
+      player2votes: null,
+      totalVotes: null,
+      started: false,
       id: tweet.tweetId,
     })
   })
