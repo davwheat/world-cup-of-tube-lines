@@ -5,7 +5,7 @@ import TubeMap from "../components/TubeMap"
 export default function LiveMap() {
   return (
     <div>
-      <TubeMap />
+      {/* <TubeMap /> */}
     </div>
   )
 }
