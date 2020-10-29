@@ -115,8 +115,8 @@ async function GetData() {
   allTweets.forEach(tweet => {
     allGames.push({
       name: tweet.name,
-      player1: null,
-      player2: null,
+      player1: KnownPlayers[tweet.name].player1 || null,
+      player2: KnownPlayers[tweet.name].player2 || null,
       player1votes: null,
       player2votes: null,
       totalVotes: null,
@@ -151,7 +151,9 @@ export default function Stages() {
     if (gameData === null || timeRemaining < 0) {
       GetData()
         .then(d => setGameData(d))
-        .catch(() => {})
+        .catch(e => {
+          console.error(e)
+        })
       setTimeRemaining(RefreshTime)
     }
 
