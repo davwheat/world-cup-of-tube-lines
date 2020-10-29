@@ -12,7 +12,7 @@
   "knockoutb4": { "player1": "DLR", "player2": "Piccadilly Line" },
   "quartera1": { "player1": "Northern Line", "player2": "Jubilee Line" },
   "quartera2": { "player1": "District Line", "player2": "Thameslink" },
-  "quarterb1": { "player1": null, "player2": null },
+  "quarterb1": { "player1": "Victoria Line", "player2": "Metropolitan Line" },
   "quarterb2": { "player1": null, "player2": null },
   "semia1": { "player1": null, "player2": null },
   "semib1": { "player1": null, "player2": null },
