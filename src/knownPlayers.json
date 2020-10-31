@@ -1,5 +1,5 @@
 {
-  "knockouta1": { "player1": "Bakerloo Line", "player2": "Northern Line" },
+  "knockouta1": { "player1": "", "player2": "" },
   "knockouta2": { "player1": "Jubilee Line", "player2": "TfL Rail" },
   "knockouta3": { "player1": "Central Line", "player2": "District Line" },
   "knockouta4": { "player1": "Circle Line", "player2": "Thameslink" },
@@ -13,8 +13,8 @@
   "quartera1": { "player1": "Northern Line", "player2": "Jubilee Line" },
   "quartera2": { "player1": "District Line", "player2": "Thameslink" },
   "quarterb1": { "player1": "Victoria Line", "player2": "Metropolitan Line" },
-  "quarterb2": { "player1": null, "player2": null },
-  "semia1": { "player1": null, "player2": null },
+  "quarterb2": { "player1": "London Overground", "player2": "DLR" },
+  "semia1": { "player1": "Jubilee Line", "player2": null },
   "semib1": { "player1": null, "player2": null },
   "final": { "player1": null, "player2": null },
   "playoff": { "player1": null, "player2": null }
