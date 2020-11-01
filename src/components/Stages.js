@@ -229,7 +229,10 @@ function Game({
   tweetId,
 }) {
   return (
-    <section className={clsx("game", gameName)} style={{ gridArea: gameName }}>
+    <section
+      className={clsx("game", gameName, { "guessed-game": !tweetId })}
+      style={{ gridArea: gameName }}
+    >
       <a
         href={tweetId ? `https://twitter.com/geofftech/status/${tweetId}` : "#"}
         target={tweetId && "_blank"}

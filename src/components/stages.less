@@ -67,6 +67,14 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
+
+  &.guessed-game {
+    z-index: 1;
+  }
+
+  &:not(.guessed-game) {
+    z-index: 2;
+  }
 }
 
 .player {
