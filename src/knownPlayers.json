@@ -15,7 +15,7 @@
   "quarterb1": { "player1": "Victoria Line", "player2": "Metropolitan Line" },
   "quarterb2": { "player1": "London Overground", "player2": "DLR" },
   "semia1": { "player1": "Jubilee Line", "player2": "Thameslink" },
-  "semib1": { "player1": "Victoria Line", "player2": null },
+  "semib1": { "player1": "Victoria Line", "player2": "DLR" },
   "final": { "player1": null, "player2": null },
   "playoff": { "player1": null, "player2": null }
 }
