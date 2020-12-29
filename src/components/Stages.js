@@ -70,7 +70,7 @@ async function GetData() {
     tweetId: CupData.finals.playoff,
   })
 
-  const apiUrl = `https://api.davwheat.dev/getpolls`
+  // const apiUrl = `https://api.davwheat.dev/getpolls`
   // const apiUrl = `http://localhost:2678/getpolls`
 
   /**
@@ -79,36 +79,36 @@ async function GetData() {
    * polls: {id: string, options: {position: number, label: string, votes: number}[]}[]
    * }}
    */
-  let data
+  // let data
 
-  try {
-    data = await (await fetch(apiUrl)).json()
-  } catch {
-    return null
-  }
+  // try {
+  //   data = await (await fetch(apiUrl)).json()
+  // } catch {
+  //   return null
+  // }
 
   // console.log(data)
 
-  data.forEach(game => {
-    const poll = game.poll
+  // data.forEach(game => {
+  //   const poll = game.poll
 
-    allTweets = allTweets.filter(tweet => tweet.tweetId !== game.tweetId)
+  //   allTweets = allTweets.filter(tweet => tweet.tweetId !== game.tweetId)
 
-    allGames.push({
-      name: game.game,
-      player1: poll
-        ? poll.options[0].label
-        : KnownPlayers[game.game].player1 || null,
-      player2: poll
-        ? poll.options[1].label
-        : KnownPlayers[game.game].player2 || null,
-      player1votes: poll ? poll.options[0].votes : null,
-      player2votes: poll ? poll.options[1].votes : null,
-      totalVotes: poll ? poll.options[0].votes + poll.options[1].votes : null,
-      started: !!poll,
-      id: game.tweetId,
-    })
-  })
+  //   allGames.push({
+  //     name: game.game,
+  //     player1: poll
+  //       ? poll.options[0].label
+  //       : KnownPlayers[game.game].player1 || null,
+  //     player2: poll
+  //       ? poll.options[1].label
+  //       : KnownPlayers[game.game].player2 || null,
+  //     player1votes: poll ? poll.options[0].votes : null,
+  //     player2votes: poll ? poll.options[1].votes : null,
+  //     totalVotes: poll ? poll.options[0].votes + poll.options[1].votes : null,
+  //     started: !!poll,
+  //     id: game.tweetId,
+  //   })
+  // })
 
   // console.log(allTweets);
 
@@ -117,10 +117,12 @@ async function GetData() {
       name: tweet.name,
       player1: KnownPlayers[tweet.name].player1 || null,
       player2: KnownPlayers[tweet.name].player2 || null,
-      player1votes: null,
-      player2votes: null,
-      totalVotes: null,
-      started: false,
+      player1votes: KnownPlayers[tweet.name].votes1 || null,
+      player2votes: KnownPlayers[tweet.name].votes2 || null,
+      totalVotes:
+        KnownPlayers[tweet.name].votes1 + KnownPlayers[tweet.name].votes2 ||
+        null,
+      started: KnownPlayers[tweet.name].votes1 ? true : false,
       id: tweet.tweetId,
     })
   })
@@ -154,21 +156,25 @@ export default function Stages() {
         .catch(e => {
           console.error(e)
         })
-      setTimeRemaining(RefreshTime)
+      // setTimeRemaining(RefreshTime)
     }
 
-    let x = setTimeout(() => {
-      setTimeRemaining(t => t - 1)
-    }, 1000)
+    // let x = setTimeout(() => {
+    //   setTimeRemaining(t => t - 1)
+    // }, 1000)
 
-    return () => {
-      clearTimeout(x)
-    }
+    // return () => {
+    //   clearTimeout(x)
+    // }
   }, [gameData, timeRemaining, setTimeRemaining])
 
   return (
     <>
-      <p>Refreshing in {timeRemaining < 0 ? 0 : timeRemaining}s</p>
+      <p>
+        Thanks for playing! Thameslink won the cup with 10,181 out of 19,790
+        votes.
+      </p>
+      {/* <p>Refreshing in {timeRemaining < 0 ? 0 : timeRemaining}s</p>
       <label>
         <input
           checked={useVotes}
@@ -178,7 +184,7 @@ export default function Stages() {
           type="checkbox"
         />{" "}
         Show vote count
-      </label>
+      </label> */}
       <article className="cup-root">
         <p className="label" style={{ gridArea: "knockoutLabel" }}>
           Knockout
