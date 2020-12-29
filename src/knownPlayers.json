@@ -1,21 +1,98 @@
 {
-  "knockouta1": { "player1": "", "player2": "" },
-  "knockouta2": { "player1": "", "player2": "" },
-  "knockouta3": { "player1": "Central Line", "player2": "District Line" },
-  "knockouta4": { "player1": "Circle Line", "player2": "Thameslink" },
+  "knockouta1": {
+    "player1": "Bakerloo Line",
+    "player2": "Northern Line",
+    "votes1": 3939,
+    "votes2": 3970
+  },
+  "knockouta2": {
+    "player1": "Jubilee Line",
+    "player2": "TfL Rail",
+    "votes1": 4474,
+    "votes2": 1483
+  },
+  "knockouta3": {
+    "player1": "Central Line",
+    "player2": "District Line",
+    "votes1": 2441,
+    "votes2": 3370
+  },
+  "knockouta4": {
+    "player1": "Circle Line",
+    "player2": "Thameslink",
+    "votes1": 2226,
+    "votes2": 4009
+  },
   "knockoutb1": {
     "player1": "Hammersmith & City Line",
-    "player2": "Victoria Line"
+    "player2": "Victoria Line",
+    "votes1": 1516,
+    "votes2": 3259
   },
-  "knockoutb2": { "player1": "Metropolitan Line", "player2": "Trams" },
-  "knockoutb3": { "player1": "Overground", "player2": "Cable Car" },
-  "knockoutb4": { "player1": "DLR", "player2": "Piccadilly Line" },
-  "quartera1": { "player1": "Northern Line", "player2": "Jubilee Line" },
-  "quartera2": { "player1": "District Line", "player2": "Thameslink" },
-  "quarterb1": { "player1": "Victoria Line", "player2": "Metropolitan Line" },
-  "quarterb2": { "player1": "London Overground", "player2": "DLR" },
-  "semia1": { "player1": "Jubilee Line", "player2": "Thameslink" },
-  "semib1": { "player1": "Victoria Line", "player2": "DLR" },
-  "final": { "player1": null, "player2": null },
-  "playoff": { "player1": null, "player2": null }
+  "knockoutb2": {
+    "player1": "Metropolitan Line",
+    "player2": "Trams",
+    "votes1": 3862,
+    "votes2": 2230
+  },
+  "knockoutb3": {
+    "player1": "Overground",
+    "player2": "Cable Car",
+    "votes1": 4104,
+    "votes2": 1588
+  },
+  "knockoutb4": {
+    "player1": "DLR",
+    "player2": "Piccadilly Line",
+    "votes1": 3206,
+    "votes2": 2293
+  },
+  "quartera1": {
+    "player1": "Northern Line",
+    "player2": "Jubilee Line",
+    "votes1": 2486,
+    "votes2": 3606
+  },
+  "quartera2": {
+    "player1": "District Line",
+    "player2": "Thameslink",
+    "votes1": 2229,
+    "votes2": 3357
+  },
+  "quarterb1": {
+    "player1": "Victoria Line",
+    "player2": "Metropolitan Line",
+    "votes1": 2980,
+    "votes2": 2579
+  },
+  "quarterb2": {
+    "player1": "London Overground",
+    "player2": "DLR",
+    "votes1": 1946,
+    "votes2": 2908
+  },
+  "semia1": {
+    "player1": "Jubilee Line",
+    "player2": "Thameslink",
+    "votes1": 5878,
+    "votes2": 6094
+  },
+  "semib1": {
+    "player1": "Victoria Line",
+    "player2": "DLR",
+    "votes1": 2899,
+    "votes2": 3876
+  },
+  "final": {
+    "player1": "Thameslink",
+    "player2": "DLR",
+    "votes1": 10181,
+    "votes2": 9609
+  },
+  "playoff": {
+    "player1": "Jubilee Line",
+    "player2": "Victoria Line",
+    "votes1": 2746,
+    "votes2": 2081
+  }
 }
