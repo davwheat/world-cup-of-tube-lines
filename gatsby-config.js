@@ -6,5 +6,5 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [`gatsby-plugin-htaccess`],
+  plugins: [`gatsby-plugin-htaccess`, `gatsby-plugin-preact`],
 }
